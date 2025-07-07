@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  JbHiFi - Weather Forecast Application - UI
+This is the front-end of the **Weather Forecast App**, built using [Next.js] with [TypeScript], [Vite] and [Jest]. It consumes a .NET backend API to fetch live weather data from OpenWeatherMap.
+
+
 
 ## Getting Started
-
-First, run the development server:
-
+### 1. Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Set environment variables
+Create a `.env.local` file in the root of the project:
+```env
+  NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
+  NEXT_PUBLIC_API_KEY=replace-with-your-api-key
+```
+> `NEXT_PUBLIC_API_KEY` is the API key required by the backend (via `X-API-Key` header). Use a valid key supplied to you by JB Hi-Fi or your team.
+---
+# If the key is rate-limited or expired, replace it with one of the following backup keys:
+# Replace inside .env.local
+  NEXT_PUBLIC_API_KEY="key-api-2"
+  NEXT_PUBLIC_API_KEY="key-api-3"
+  NEXT_PUBLIC_API_KEY="key-api-4"
+  NEXT_PUBLIC_API_KEY="key-api-5"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Run the development server
+```bash
+npm run dev
+```
+Then open [http://localhost:3000] in your browser.
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Running Tests
+```bash
+npm run test
+```
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## How It Works
+- The user enters a **city** and **country**.
+- The UI sends a request to the backend API:  
+  `GET /api/weather/description?city={city}&country={country}`
+- The request includes an API key in the header: X-API-Key: your-api-key-here
+- The backend then queries the OpenWeatherMap API and returns a description like:  
+  `"few clouds"`, `"clear sky"`, etc.
+- The UI displays the result or an error message if something goes wrong.
+---
+
+
+## Folder Structure
+```
+/src
+  ├── app/               # Next.js pages (App Router)
+  │   └── page.tsx       # Main UI
+  ├── components/        # (Optional) reusable UI components
+  ├── styles/            # CSS modules
+  └── utils/             # API logic (if needed)
+
+.env.local               # Local environment variables
+next.config.js           # Next.js config
+```
+
+
+
+
+
+## Deployment
+To build for production:
+```bash
+npm run build
+npm run start
+```
+
+
+
+## Notes
+- This project assumes the backend is already running at `http://localhost:5000`.
+- Ensure CORS is enabled on the backend for local development.
+- Each request to the API includes the `X-API-Key` header with the configured key.
+---
