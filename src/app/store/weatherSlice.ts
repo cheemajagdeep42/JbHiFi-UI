@@ -33,7 +33,7 @@ const weatherSlice = createSlice({
     name: 'weather',
     initialState,
     reducers: {
-        resetWeather(state) {
+        clearWeatherData(state) {
             state.description = null;
             state.error = null;
             state.loading = false;
@@ -57,5 +57,5 @@ const weatherSlice = createSlice({
     },
 });
 
-export const { resetWeather } = weatherSlice.actions;
+export const { clearWeatherData } = weatherSlice.actions;
 export default weatherSlice.reducer;

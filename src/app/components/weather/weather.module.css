@@ -67,3 +67,29 @@
 .result {
   color: #333;
 }
+
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}

@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeatherData } from '@/app/store/weatherSlice';
+import { fetchWeatherData, clearWeatherData } from '@/app/store/weatherSlice';
 import { RootState, AppDispatch } from '@/app/store';
 import styles from './weather.module.css';
+import { getWeatherIcon } from '@/app/utils/getWeatherIcon';
 
 export default function WeatherComponent() {
     const dispatch = useDispatch<AppDispatch>();
@@ -28,7 +29,14 @@ export default function WeatherComponent() {
             return;
         }
 
+        dispatch(clearWeatherData()); // ✅ Clear previous results
         dispatch(fetchWeatherData({ city, country }));
+    };
+
+    const handleClear = () => {
+        setCity('');
+        setCountry('');
+        dispatch(clearWeatherData());
     };
 
     return (
@@ -38,18 +46,22 @@ export default function WeatherComponent() {
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <input
                         className={styles.input}
-                        type="text"
+                        type="search"
                         placeholder="Enter city"
                         value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                    />
+                        onChange={(e) => {
+                            setCity(e.target.value);
+                            if (description) dispatch(clearWeatherData());
+                        }} />
                     <input
                         className={styles.input}
-                        type="text"
+                        type="search"
                         placeholder="Enter country"
                         value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                    />
+                        onChange={(e) => {
+                            setCountry(e.target.value);
+                            if (description) dispatch(clearWeatherData());
+                        }} />
                     <button className={styles.button} type="submit" disabled={loading}>
                         {loading ? 'Loading...' : 'Get Forecast'}
                     </button>
@@ -61,7 +73,10 @@ export default function WeatherComponent() {
                     ) : apiError ? (
                         <p className={styles.error}>{apiError}</p>
                     ) : description ? (
-                        <p className={styles.result}>Weather: {description}</p>
+                        <p className={styles.result}>
+                            {getWeatherIcon(description)}{' '}
+                            {description.charAt(0).toUpperCase() + description.slice(1)}
+                        </p>
                     ) : null}
                 </div>
             </div>
