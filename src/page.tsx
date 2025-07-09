@@ -1,6 +1,6 @@
 'use client';
 
-import WeatherComponent from '@/app/components/weather';
+import WeatherComponent from '@/components/weather';
 
 export default function Page() {
   return <WeatherComponent />;

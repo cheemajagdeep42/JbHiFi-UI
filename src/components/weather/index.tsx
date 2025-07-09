@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeatherData, clearWeatherData } from '@/app/store/weatherSlice';
-import { RootState, AppDispatch } from '@/app/store';
+import { fetchWeatherData, clearWeatherData } from '@/store/weatherSlice';
+import { RootState, AppDispatch } from '@/store';
 import styles from './weather.module.css';
-import { getWeatherIcon } from '@/app/utils/getWeatherIcon';
+import { getWeatherIcon } from '@/utils/getWeatherIcon';
 
 export default function WeatherComponent() {
     const dispatch = useDispatch<AppDispatch>();
@@ -31,12 +31,6 @@ export default function WeatherComponent() {
 
         dispatch(clearWeatherData()); // ✅ Clear previous results
         dispatch(fetchWeatherData({ city, country }));
-    };
-
-    const handleClear = () => {
-        setCity('');
-        setCountry('');
-        dispatch(clearWeatherData());
     };
 
     return (

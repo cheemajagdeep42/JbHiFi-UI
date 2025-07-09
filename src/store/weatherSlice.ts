@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchWeather } from '@/app/api/weatherApi';
+import { fetchWeather } from '@/api/weatherApi';
 
 export interface WeatherState {
     description: string | null;
@@ -23,8 +23,8 @@ export const fetchWeatherData = createAsyncThunk(
         try {
             const data = await fetchWeather(city, country);
             return data.description;
-        } catch (error: any) {
-            return thunkAPI.rejectWithValue(error.message);
+        } catch (error) {
+            return thunkAPI.rejectWithValue((error as Error).message);
         }
     }
 );

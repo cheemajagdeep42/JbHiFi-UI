@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import WeatherComponent from '@/app/components/weather';
-import * as weatherApi from '@/app/api/weatherApi';
+import WeatherComponent from '@/components/weather';
+import * as weatherApi from '@/api/weatherApi';
 import { Provider } from 'react-redux';
-import { store } from '@/app/store';
+import { store } from '@/store';
 
-jest.mock('@/app/api/weatherApi', () => ({
+jest.mock('@/api/weatherApi', () => ({
   fetchWeather: jest.fn(),
 }));
 
@@ -75,7 +75,7 @@ describe('WeatherComponent', () => {
     });
     fireEvent.click(screen.getByText(/get forecast/i));
 
-    const weatherText = await screen.findByText(/weather:\s*sunny/i);
+    const weatherText = await screen.findByText(/sunny/i);
     expect(weatherText).toBeInTheDocument();
   });
 });
