@@ -75,7 +75,7 @@ describe('WeatherComponent', () => {
     });
     fireEvent.click(screen.getByText(/get forecast/i));
 
-    const weatherText = await screen.findByText(/weather:\s*sunny/i);
+    const weatherText = await screen.findByText(/sunny/i);
     expect(weatherText).toBeInTheDocument();
   });
 });

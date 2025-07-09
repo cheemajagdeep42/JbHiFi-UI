@@ -1,6 +1,6 @@
 import reducer, {
     fetchWeatherData,
-    resetWeather
+    clearWeatherData
 } from '@/app/store/weatherSlice';
 import { WeatherState } from '@/app/store/weatherSlice';
 import { fetchWeather } from '@/app/api/weatherApi';
@@ -25,14 +25,14 @@ describe('weatherSlice', () => {
         expect(reducer(undefined, { type: '@@INIT' })).toEqual(initialState);
     });
 
-    it('should handle resetWeather action', () => {
+    it('should handle clearWeatherData action', () => {
         const state: WeatherState = {
             description: 'Sunny',
             loading: true,
             error: 'Some error',
         };
 
-        const nextState = reducer(state, resetWeather());
+        const nextState = reducer(state, clearWeatherData());
 
         expect(nextState).toEqual(initialState);
     });
