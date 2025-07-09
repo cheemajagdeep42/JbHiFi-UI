@@ -33,12 +33,6 @@ export default function WeatherComponent() {
         dispatch(fetchWeatherData({ city, country }));
     };
 
-    const handleClear = () => {
-        setCity('');
-        setCountry('');
-        dispatch(clearWeatherData());
-    };
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
