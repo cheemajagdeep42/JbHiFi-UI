@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchWeather } from '@/app/api/weatherApi';
+import { fetchWeather } from '@/api/weatherApi';
 
 export interface WeatherState {
     description: string | null;

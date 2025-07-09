@@ -1,11 +1,11 @@
 import reducer, {
     fetchWeatherData,
     clearWeatherData
-} from '@/app/store/weatherSlice';
-import { WeatherState } from '@/app/store/weatherSlice';
-import { fetchWeather } from '@/app/api/weatherApi';
+} from '@/store/weatherSlice';
+import { WeatherState } from '@/store/weatherSlice';
+import { fetchWeather } from '@/api/weatherApi';
 
-jest.mock('@/app/api/weatherApi');
+jest.mock('@/api/weatherApi');
 const mockedFetchWeather = fetchWeather as jest.Mock;
 
 // Initial state
