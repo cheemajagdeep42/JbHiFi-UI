@@ -22,9 +22,10 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
     - `local-fake-key-3`
     - `local-fake-key-4`
     - `local-fake-key-5`
-    > These are fake keys, just for local testing. PROD Keys are different and stored safely under AWS.
-    > ⚠️ **Note:** The backend only allows **5 requests per API key per hour**.
+    >  These are fake keys, just for local testing.
     >  On **PROD**, all API keys are stored securely in **AWS Systems Manager – Parameter Store**.
+    > ⚠️ **Note:** The backend only allows **5 requests per API key per hour**.
+
 
 4. **Start the .NET backend on local** (Dockerized):
      Clone the backend repository and follow its instructions to run the project under Docker:
