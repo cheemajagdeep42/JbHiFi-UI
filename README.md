@@ -45,7 +45,6 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
       npm run test
     ```
 
-
 ### ⚠️ API Key Strategy: Local vs Production
    ✅ Local Development - 
        We use fake API keys like local-fake-key-1 in .env.local to simulate frontend → backend calls without exposing real secrets.
