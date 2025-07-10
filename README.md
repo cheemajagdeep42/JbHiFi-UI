@@ -2,45 +2,37 @@
 This is the front-end of the **Weather Forecast App**, built using [Next.js] with [TypeScript] and [Jest]. It consumes a .NET backend API to fetch live weather data from OpenWeatherMap.
 
 
+**How To Run this Application on Local:**
+1) Clone This Repository to local.
+2) **Install Dependencies with below command**
+   npm install
 
-## Getting Started
-### 1. Install dependencies
-```bash
-npm install
-```
+3) **This UI Application need to set beow 2 environment Variables under .env.local file**
+   3.1)  Create a `.env.local` file in the root of the project:
+         NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
+         NEXT_PUBLIC_API_KEY=replace-with-your-api-key
+         For Local, NEXT_PUBLIC_API_KEY can have one of these value -  ["local-fake-key-1", "local-fake-key-2", "local-fake-key-3", "local-fake-key-4","local-fake-key-5"]
+         But For PROD, Valid API Keys are stored under AWS Systems Manager - Parameter Store.
+         BackEnd API will only allow 5 Calls per Key within 1 hour.
+   3.2) This Project will call a .Net API hosted under Docker Image on local, so we need to run below command at root of this Project.
+         docker-compose up --build
+         This will run the required Docker Image on localhost:5000
 
-
-### 2. Set environment variables
-Create a `.env.local` file in the root of the project:
-```env
-  NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
-  NEXT_PUBLIC_API_KEY=replace-with-your-api-key
-```
-> `NEXT_PUBLIC_API_KEY` is the API key required by the backend (via `X-API-Key` header). Use a valid key supplied to you by JB Hi-Fi or your team.
----
-# If the key is rate-limited or expired, replace it with one of the following backup keys:
-# Replace inside .env.local
-  NEXT_PUBLIC_API_KEY="key-api-2"
-  NEXT_PUBLIC_API_KEY="key-api-3"
-  NEXT_PUBLIC_API_KEY="key-api-4"
-  NEXT_PUBLIC_API_KEY="key-api-5"
-
-
-
-### 3. Run the development server
-```bash
-npm run dev
-```
-Then open [http://localhost:3000] in your browser.
----
+4) **Run the development server**
+   npm run dev
+   Then open [http://localhost:3000] in your browser.
+5) **Running Tests**
+   npm run test
 
 
 
-## Running Tests
-```bash
-npm run test
-```
----
+**How To Run this Application on PROD:**
+1)  CI/CD has been setup for this project using Github Workflows.
+2)  On every push to main branch, UI COdebase will be deployed to AWS S3 and PROD
+3)  PROD Link is - **https://weatherreportinfo.com**
+4)  BackEnd is deployed under same domain(subDomain) - **https://weatherreportinfo.com**
+5)  Required Secrets for backEndAPI and 3rd Party API(https://openweathermap.org), are configured under - AWS Systems Manager.
+
 
 
 
@@ -55,34 +47,9 @@ npm run test
 ---
 
 
-## Folder Structure
-```
-/src
-  ├── app/               # Next.js pages (App Router)
-  │   └── page.tsx       # Main UI
-  ├── components/        # (Optional) reusable UI components
-  ├── styles/            # CSS modules
-  └── utils/             # API logic (if needed)
-
-.env.local               # Local environment variables
-next.config.js           # Next.js config
-```
-
-
-
-
-
-## Deployment
-To build for production:
-```bash
-npm run build
-npm run start
-```
-
-
 
 ## Notes
+- This Project will call a .Net API running under docker Image on url(http://localhost:5000)
 - This project assumes the backend is already running at `http://localhost:5000`.
-- Ensure CORS is enabled on the backend for local development.
 - Each request to the API includes the `X-API-Key` header with the configured key.
 ---
