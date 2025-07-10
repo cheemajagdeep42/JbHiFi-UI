@@ -54,7 +54,6 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
   💡 Why Fake Keys?
          To let reviewers run the UI without setup friction, while keeping real credentials secure. The fake key lets your UI communicate with the backend, which then enforces key validation and rate limiting.
 
-
 ---
 ## ☁️ How To Run This Application on PROD
   - **CI/CD** is configured using **GitHub Actions**.
