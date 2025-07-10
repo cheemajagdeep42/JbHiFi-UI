@@ -45,6 +45,8 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
       npm run test
     ```
 
+
+
 > ⚠️ **API Key Strategy: Local vs Production**
 >
 > ✅ **Local Development**  
@@ -55,6 +57,8 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
 >
 > 💡 **Why Fake Keys?**  
 > To let JBHiFi Team - Reviewers run the UI without setup friction, while keeping real credentials secure. The fake key lets your UI communicate with the backend, which then enforces key validation and rate limiting.
+
+
 
 
 ---
