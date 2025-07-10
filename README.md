@@ -11,13 +11,11 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
     npm install
     ```
 
-3. **Setup environment variables** by creating a `.env.local` file in the root folder:
-    ```env
-       NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
-       NEXT_PUBLIC_API_KEY=`local-fake-key-1`
-    ```
-
-    For **local development**, `NEXT_PUBLIC_API_KEY` can be one of:
+3. **Setup environment**
+    To run this project locally, you must configure environment variables.
+    Copy the .env.example file to .env.local:
+       cp .env.example .env.local
+    For **local development**, `NEXT_PUBLIC_API_KEY` under .env.local file can be one:
     - `local-fake-key-1`
     - `local-fake-key-2`
     - `local-fake-key-3`
