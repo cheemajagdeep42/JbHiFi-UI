@@ -1,88 +1,101 @@
-#  JbHiFi - Weather Forecast Application - UI
-This is the front-end of the **Weather Forecast App**, built using [Next.js] with [TypeScript], [Vite] and [Jest]. It consumes a .NET backend API to fetch live weather data from OpenWeatherMap.
+# 🌦️ JbHiFi - Weather Forecast Application (UI)
 
+This is the **front-end** of the **Weather Forecast App**, built using **Next.js**, **TypeScript**, and **Jest**.  
+It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherMap](https://openweathermap.org/).
 
-
-## Getting Started
-### 1. Install dependencies
-```bash
-npm install
-```
-
-
-### 2. Set environment variables
-Create a `.env.local` file in the root of the project:
-```env
-  NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
-  NEXT_PUBLIC_API_KEY=replace-with-your-api-key
-```
-> `NEXT_PUBLIC_API_KEY` is the API key required by the backend (via `X-API-Key` header). Use a valid key supplied to you by JB Hi-Fi or your team.
----
-# If the key is rate-limited or expired, replace it with one of the following backup keys:
-# Replace inside .env.local
-  NEXT_PUBLIC_API_KEY="key-api-2"
-  NEXT_PUBLIC_API_KEY="key-api-3"
-  NEXT_PUBLIC_API_KEY="key-api-4"
-  NEXT_PUBLIC_API_KEY="key-api-5"
-
-
-
-### 3. Run the development server
-```bash
-npm run dev
-```
-Then open [http://localhost:3000] in your browser.
 ---
 
+## How To Run This Application on Local
 
+1. **Clone** this repository to your local.
+2. **Install dependencies** using the command:
 
-## Running Tests
-```bash
-npm run test
-```
+    ```bash
+    npm install
+    ```
+
+3. **Setup environment variables** by creating a `.env.local` file in the root folder:
+
+    ```env
+    NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
+    NEXT_PUBLIC_API_KEY=`local-fake-key-1`
+    ```
+
+    For **local development**, `NEXT_PUBLIC_API_KEY` can be one of:
+
+    - `local-fake-key-1`
+    - `local-fake-key-2`
+    - `local-fake-key-3`
+    - `local-fake-key-4`
+    - `local-fake-key-5`
+
+    >  On **PROD**, all API keys are stored securely in **AWS Systems Manager – Parameter Store**.
+
+4. **Start the .NET backend on local** (Dockerized):
+
+    ```bash
+    docker-compose up --build
+    ```
+
+5. **Start the UI development server**:
+
+    ```bash
+    npm run dev
+    ```
+
+    Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+6. **Run unit tests**:
+
+    ```bash
+    npm run test
+    ```
+
 ---
 
+## ☁️ How To Run This Application on PROD
 
+- **CI/CD** is configured using **GitHub Actions**.
+- On every push to the `main` branch, the UI is deployed to:
+    - AWS **S3** (static hosting)
+    - and **PROD** domain:  
+      🔗 [https://weatherreportinfo.com](https://weatherreportinfo.com)
+- Backend is deployed under the same domain (subdomain):  
+  🔗 [https://api.weatherreportinfo.com](https://api.weatherreportinfo.com)
+- All secrets for backend and 3rd-party APIs ([OpenWeatherMap](https://openweathermap.org)) are managed in **AWS Systems Manager**.
 
-## How It Works
-- The user enters a **city** and **country**.
-- The UI sends a request to the backend API:  
-  `GET /api/weather/description?city={city}&country={country}`
-- The request includes an API key in the header: X-API-Key: your-api-key-here
-- The backend then queries the OpenWeatherMap API and returns a description like:  
-  `"few clouds"`, `"clear sky"`, etc.
-- The UI displays the result or an error message if something goes wrong.
 ---
 
+## ⚙️ How It Works
 
-## Folder Structure
-```
-/src
-  ├── app/               # Next.js pages (App Router)
-  │   └── page.tsx       # Main UI
-  ├── components/        # (Optional) reusable UI components
-  ├── styles/            # CSS modules
-  └── utils/             # API logic (if needed)
+1. The user enters a **city** and **country**.
+2. The UI sends a request to the backend:
 
-.env.local               # Local environment variables
-next.config.js           # Next.js config
-```
+    ```http
+    GET /api/weather/description?city={city}&country={country}
+    ```
 
+3. The request includes an **API key** in the header:
 
+    ```http
+    X-API-Key: your-api-key
+    ```
 
+4. The backend:
+    - Validates the API key
+    - Applies **rate limiting** (max 5/hour per key)
+    - Forwards the request to **OpenWeatherMap**
+5. The backend responds with the weather description.
+6. The UI displays the result or a friendly error.
 
-
-## Deployment
-To build for production:
-```bash
-npm run build
-npm run start
-```
-
-
-
-## Notes
-- This project assumes the backend is already running at `http://localhost:5000`.
-- Ensure CORS is enabled on the backend for local development.
-- Each request to the API includes the `X-API-Key` header with the configured key.
 ---
+
+## 📝 Notes
+
+- This project calls a **.NET API** running inside **Docker** (`http://localhost:5000`).
+- The backend must be up and running for the UI to work locally.
+- All API requests must include the `X-API-Key` header.
+
+---
+
+Let me know if you want a visual version of this README as well (for your portfolio site or docs). ✅
