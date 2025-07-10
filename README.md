@@ -27,11 +27,9 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
     >  On **PROD**, all API keys are stored securely in **AWS Systems Manager – Parameter Store**.
 
 4. **Start the .NET backend on local** (Dockerized):
-   Clone the backend repository and follow its instructions:
-   📁 **Repo Link**: [weatherForecast-backEnd](https://github.com/cheemajagdeep42/weatherForecast-backEnd)
-    ```
-    docker-compose up --build
-    ```
+     Clone the backend repository and follow its instructions to run the project under Docker:
+     📁 **Repo Link**: [weatherForecast-backEnd](https://github.com/cheemajagdeep42/weatherForecast-backEnd)
+
 
 5. **Start the UI development server**:
     ```
