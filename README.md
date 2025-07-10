@@ -47,7 +47,7 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
 ### 🚨 Super Important: Backend Will Not Work Without This!
      Your backend **will not return weather data** unless you configure a valid **OpenWeatherMap API key**.
      To run this app **successfully on local**, do the following in backEnd Project:
-     ```bash
+     ```
       👉 Open: appsettings.Development.json  
       🔑 Add ApiKey to this Object: 
             "OPENWEATHER_API_KEY": {"ApiKey": your-valid-openweather-api-key"}
