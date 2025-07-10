@@ -45,14 +45,17 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
       npm run test
     ```
 
-### ⚠️ API Key Strategy: Local vs Production
-   ✅ Local Development - 
-       We use fake API keys like local-fake-key-1 in .env.local to simulate frontend → backend calls without exposing real secrets.
-       These keys are predefined and whitelisted in the backend config (appsettings.Development.json) to allow smooth local development and testing.
-  🔒 Production
-         In production, valid keys are stored securely in AWS Systems Manager (Parameter Store) and injected at runtime. These keys are not hardcoded or exposed.
-  💡 Why Fake Keys?
-         To let reviewers run the UI without setup friction, while keeping real credentials secure. The fake key lets your UI communicate with the backend, which then enforces key validation and rate limiting.
+> ⚠️ **API Key Strategy: Local vs Production**
+>
+> ✅ **Local Development**  
+> We use fake API keys like `local-fake-key-1` in `.env.local` to simulate frontend → backend calls without exposing real secrets. These keys are predefined and whitelisted in the backend config (`appsettings.Development.json`) to allow smooth local development and testing.
+>
+> 🔒 **Production**  
+> In production, valid keys are stored securely in **AWS Systems Manager (Parameter Store)** and injected at runtime. These keys are not hardcoded or exposed.
+>
+> 💡 **Why Fake Keys?**  
+> To let JBHiFi Team - Reviewers run the UI without setup friction, while keeping real credentials secure. The fake key lets your UI communicate with the backend, which then enforces key validation and rate limiting.
+
 
 ---
 ## ☁️ How To Run This Application on PROD
