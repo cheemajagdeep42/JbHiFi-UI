@@ -12,15 +12,17 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
     ```
 
 3. **Setup environment**
-    To run this project locally, you must configure environment variables.
-    Copy the .env.example file to .env.local:
-       cp .env.example .env.local
-    For **local development**, `NEXT_PUBLIC_API_KEY` under .env.local file can be one:
+    To run this project locally, you must configure .env.local file as below.
+   >   Copy the .env.example file to .env.local:
+         cp .env.example .env.local
+
+   > For **local development**, `NEXT_PUBLIC_API_KEY` under .env.local file can be one:
     - `local-fake-key-1`
     - `local-fake-key-2`
     - `local-fake-key-3`
     - `local-fake-key-4`
     - `local-fake-key-5`
+
     > ⚠️ **Note:** The backend only allows **5 requests per API key per hour**.
     >  On **PROD**, all API keys are stored securely in **AWS Systems Manager – Parameter Store**.
 
