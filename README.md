@@ -1,5 +1,5 @@
 #  JbHiFi - Weather Forecast Application - UI
-This is the front-end of the **Weather Forecast App**, built using [Next.js] with [TypeScript], [Vite] and [Jest]. It consumes a .NET backend API to fetch live weather data from OpenWeatherMap.
+This is the front-end of the **Weather Forecast App**, built using [Next.js] with [TypeScript] and [Jest]. It consumes a .NET backend API to fetch live weather data from OpenWeatherMap.
 
 
 
