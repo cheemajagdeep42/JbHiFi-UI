@@ -22,12 +22,12 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
     ```
 
     For **local development**, `NEXT_PUBLIC_API_KEY` can be one of:
-
     - `local-fake-key-1`
     - `local-fake-key-2`
     - `local-fake-key-3`
     - `local-fake-key-4`
     - `local-fake-key-5`
+    BackEnd only allows 5 Requests per API_KEY in one hour.
 
     >  On **PROD**, all API keys are stored securely in **AWS Systems Manager – Parameter Store**.
 
