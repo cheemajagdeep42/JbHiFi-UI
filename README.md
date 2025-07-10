@@ -51,8 +51,9 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
      To run this app **successfully on local**, do the following in backEnd Project:
      ```bash
       👉 Open: appsettings.Development.json  
-      🔑 Set: "OPENWEATHER_API_KEY": "your-valid-openweather-api-key"
-
+      🔑 Add ApiKey to this Object: 
+            "OPENWEATHER_API_KEY": {"ApiKey": your-valid-openweather-api-key"}
+             Don't change BaseUrl, we need that. 
 
 > ⚠️ **API Key Strategy: Local vs Production**
 >
