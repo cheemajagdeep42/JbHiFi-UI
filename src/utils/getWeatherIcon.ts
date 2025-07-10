@@ -1,13 +1,24 @@
-export function getWeatherIcon(description: string): string {
+export const getWeatherIcon = (description: string): string => {
     const lower = description.toLowerCase();
 
-    if (lower.includes("clear")) return "☀️";
-    if (lower.includes("cloud")) return "☁️";
-    if (lower.includes("rain")) return "🌧️";
-    if (lower.includes("thunder")) return "⛈️";
-    if (lower.includes("snow")) return "❄️";
-    if (lower.includes("fog") || lower.includes("mist")) return "🌫️";
-    if (lower.includes("wind")) return "🌬️";
+    switch (true) {
+        case lower.includes("clear"):
+            return "☀️";
+        case lower.includes("cloud"):
+            return "☁️";
+        case lower.includes("rain"):
+            return "🌧️";
+        case lower.includes("thunder"):
+            return "⛈️";
+        case lower.includes("snow"):
+            return "❄️";
+        case lower.includes("fog"):
+        case lower.includes("mist"):
+            return "🌫️";
+        case lower.includes("wind"):
+            return "🌬️";
+        default:
+            return "❓";
+    }
+};
 
-    return "🌈";
-}

@@ -7,7 +7,7 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY || '';
 
 export const fetchWeather = async (city: string, country: string) => {
     const response = await fetch(
-        `${BASE_URL}/weather/description?city=${city}&country=${country}`,
+        `${BASE_URL}/api/weather/description?city=${city}&country=${country}`,
         {
             headers: {
                 'X-API-KEY': API_KEY,
