@@ -14,7 +14,7 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
 3. **Setup environment**
     To run this project locally, you must configure .env.local file as below.
    >   Copy the .env.example file to .env.local:
-         cp .env.example .env.local
+         > Run this command or do it manually - cp .env.example .env.local
 
    > For **local development**, `NEXT_PUBLIC_API_KEY` under .env.local file can be one:
     - `local-fake-key-1`
