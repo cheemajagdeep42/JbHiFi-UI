@@ -27,7 +27,7 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
     - `local-fake-key-3`
     - `local-fake-key-4`
     - `local-fake-key-5`
-    BackEnd only allows 5 Requests per API_KEY in one hour.
+> ⚠️ **Note:** The backend only allows **5 requests per API key per hour**.
 
     >  On **PROD**, all API keys are stored securely in **AWS Systems Manager – Parameter Store**.
 
