@@ -97,5 +97,3 @@ It consumes a **.NET backend API** to fetch live weather data from [OpenWeatherM
 - All API requests must include the `X-API-Key` header.
 
 ---
-
-Let me know if you want a visual version of this README as well (for your portfolio site or docs). ✅
